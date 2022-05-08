@@ -4,7 +4,10 @@ import com.ndt2101.helloworld.dto.UserDTO;
 import com.ndt2101.helloworld.entities.UserEntity;
 import org.springframework.stereotype.Component;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Create by Tuan
@@ -26,5 +29,17 @@ public class UserConvertor {
         });
         dto.setRoles(roles);
         return dto;
+    }
+
+    public UserEntity toUserEntity(UserDTO dto, UserEntity entity) {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            entity.setName(dto.getName());
+            entity.setDateOfBirth(format.parse(dto.getDateOfBirth()));
+            entity.setHomeTown(dto.getHomeTown());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return entity;
     }
 }

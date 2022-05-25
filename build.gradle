@@ -2,6 +2,7 @@ plugins {
     id 'org.springframework.boot' version '2.6.2'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
+    id 'org.jetbrains.kotlin.jvm' version '1.7.0-Beta'
 }
 
 group = 'com.ndt2101'
@@ -24,13 +25,29 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.6.2'
     implementation 'mysql:mysql-connector-java:8.0.27'
     implementation 'org.modelmapper:modelmapper:3.0.0'
+    //sets
+    implementation 'com.google.guava:guava:11.0.2'
+    implementation 'org.thymeleaf:thymeleaf-spring4:3.0.15.RELEASE'
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     annotationProcessor 'org.projectlombok:lombok'
     annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.security:spring-security-test'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 }
 
 test {
     useJUnitPlatform()
+}
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+compileTestKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }

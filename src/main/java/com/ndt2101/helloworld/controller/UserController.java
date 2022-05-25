@@ -14,9 +14,8 @@ import org.springframework.web.bind.annotation.*;
  * 12:08
  * 14 Jan 2022
  */
-@CrossOrigin //?
 @RestController
-@RequestMapping("/")
+@RequestMapping("/users/")
 public class UserController {
     @Autowired
     IUserService userService;
@@ -26,12 +25,12 @@ public class UserController {
         return userService.save(userDTO);
     }
 
-    @PutMapping("user/{id}")
+    @PutMapping("{id}")
     public UserDTO update(@RequestBody UserDTO userDTO, @PathVariable("id") Long id) {
         return userService.save(userDTO);
     }
 
-    @GetMapping("user")
+    @GetMapping
     public UserOutput getAllUser(@RequestParam(name = "page", required = false) Integer page,
                                  @RequestParam(name = "limit", required = false) Integer limit) {
         UserOutput userOutput = new UserOutput();

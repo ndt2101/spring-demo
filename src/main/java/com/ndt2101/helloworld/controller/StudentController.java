@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-//@RestController
-@Controller // dung cho thymeleaf
+@RestController
+//@Controller // dung cho thymeleaf
 @RequestMapping
 public class StudentController {
 
